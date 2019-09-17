@@ -74,6 +74,14 @@ class CuratorTest < Minitest::Test
    assert_equal ["1", "2", "3"], @curator.get_all_artist_id
   end
 
+  def test_get_all_artist_location
+    @curator.add_artist(@artist_1)
+    @curator.add_artist(@artist_2)
+    @curator.add_artist(@artist_3)
+
+   assert_equal ["France", "United States", "United States"], @curator.get_all_artist_location
+  end
+
   def test_get_all_artist_id_through_photo
     @curator.add_photograph(@photo_1)
     @curator.add_photograph(@photo_2)
@@ -96,7 +104,6 @@ class CuratorTest < Minitest::Test
   end
 
   def test_photographs_taken_by_artist_from_location
-    skip
     @curator.add_artist(@artist_1)
     @curator.add_artist(@artist_2)
     @curator.add_artist(@artist_3)

@@ -31,6 +31,11 @@ class Curator
     @artists.map {|artist| artist.id}
   end
 
+  def get_all_artist_location
+    @artists.map {|artist| artist.country}
+  end
+
+
   def get_all_artist_id_through_photo
     @photographs.map {|photo| photo.artist_id}
   end
@@ -39,5 +44,9 @@ class Curator
     artist_array = []
     id = get_all_artist_id_through_photo.detect{ |id| get_all_artist_id_through_photo.count(id) > 1 }
     artist_array << find_artist_by_id(id)
+    end
+
+    def photographs_taken_by_artist_from(location)
+      @artists.map {|artist| artist if  artist.country == location}.compact
     end
   end
